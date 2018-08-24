@@ -18,6 +18,9 @@ guesses = ''
 
 while turns > 0:
 
+    # create var to track underscores left
+    blanksLeft = 0
+
     # print underscores & correct letters
     print("")   # visual spacing in game
 
@@ -31,12 +34,23 @@ while turns > 0:
 
             print("_", end=" ")
 
-    print("\n") # visual spacing in game
+            blanksLeft += 1
 
+    print("\n")  # visual spacing in game
+    
+    # handle win
+    if blanksLeft == 0:
+
+        print("You won!!!")
+
+        break
+
+    # grab user input and add into guesses var
     guess = input("guess a letter: ")
 
     guesses += guess
 
+    # handle incorrect guesses
     if guess not in word:
 
         turns -= 1
@@ -45,6 +59,7 @@ while turns > 0:
 
         print("You have", turns, "guesses left.")
 
+        # end game
         if turns == 0:
 
-            print("You lost :(")
+            print("\nYou lost :(")
