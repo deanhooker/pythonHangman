@@ -10,7 +10,7 @@ print("Hello", name + ".", "Let's play hangman!")
 # set game variables
 word = "anaconda"
 
-turns = 8
+turns = 4
 
 guesses = ''
 
@@ -18,7 +18,8 @@ guesses = ''
 
 while turns > 0:
 
-    print("")
+    # print underscores & correct letters
+    print("")   # visual spacing in game
 
     for letter in word:
 
@@ -30,10 +31,20 @@ while turns > 0:
 
             print("_", end=" ")
 
-            turns - 1
-
-    print("\n")
+    print("\n") # visual spacing in game
 
     guess = input("guess a letter: ")
 
     guesses += guess
+
+    if guess not in word:
+
+        turns -= 1
+
+        print("Nope...")
+
+        print("You have", turns, "guesses left.")
+
+        if turns == 0:
+
+            print("You lost :(")
